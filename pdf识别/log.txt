@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "C:/Users/123456/PycharmProjects/报销自动化/pdf识别/pdf识别.py", line 37, in <module>
+    pdf2text('4.pdf')
+  File "C:/Users/123456/PycharmProjects/报销自动化/pdf识别/pdf识别.py", line 21, in pdf2text
+    raise MyException.FileErrorException(FILE_ERROR_INFOR['FILE_NOT_FOUNT'])
+MyException.MyException.FileErrorException: file can not founded,please check your path
