@@ -17,6 +17,7 @@ def pdf2text(file_path,output_path='.'):
     :param filename: 文件路径
     :return: filename.txt
     """
+
     if not file_operate.exist_file(file_path):
         raise MyException.FileErrorException(FILE_ERROR_INFOR['FILE_NOT_FOUNT'])
     if not file_operate.check_extension(file_path):
