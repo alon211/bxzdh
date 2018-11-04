@@ -47,7 +47,7 @@ def export_pdf_to_txt(import_path,export_path='.'):
         return False
     for pdf in pdf_files:
         try:
-            pdf2text(pdf)
+            pdf2text(pdf,export_path)
             rst=True
         except Exception as e:
             print(e)

@@ -47,9 +47,9 @@ def export_txtfile(img,txtname,lang='chi_sim+chi_sim2'):
                 file.write(line.content)
         file.close()
         return True
-def export_img_to_txt(import_path,export_path='.'):
+def export_ditie_img_to_txt(import_path, export_path='.'):
     """
-    扫描该路径将所有png图片转为txt
+    扫描该路径将所有地铁png图片转为txt
     :param import_path: 扫描的文件夹路径
     :param export_path:输出的文件夹路径
     :return: 如果成功，为True，如果失败为False
@@ -65,7 +65,7 @@ def export_img_to_txt(import_path,export_path='.'):
         return False
     for img in img_files:
         try:
-            txtname=f'{file_operate.split_path(img)[1]}ditie.txt'
+            txtname=os.path.join(export_path,f'{file_operate.split_path(img)[1]}ditie.txt')
             export_txtfile(img,txtname)
             rst=True
         except Exception as e:

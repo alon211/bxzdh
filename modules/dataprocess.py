@@ -1,8 +1,10 @@
 import time
 import re
 import logging
+import datetime
+from file_operate import file_operate
 import numpy as np
-def ditie_data_process(filename,reason):
+def ditie_data_process(filename,reason,starttime,endtime):
     """
     该方法仅针对metro APP中账单明细的截图有用
     :param filename: 图片识别后生成的txt文档路径
@@ -24,6 +26,7 @@ def ditie_data_process(filename,reason):
     #--------------------将数据整理后放入data中---------------------------------
 
     while True:
+
         #从文件末尾开始搜索
         i=f.rfind('出站')
         if i <0:
@@ -78,7 +81,12 @@ def ditie_data_process(filename,reason):
 
 
         startpalce=f[i:]
-
+        startdate=datetime.datetime.strptime(starttime,'%m-%d')
+        enddate=datetime.datetime.strptime(endtime,'%m-%d')
+        curdate=datetime.datetime.strptime(timedata,'%m-%d')
+        if curdate>enddate or curdate<startdate:
+            print(f'startdate:{startdate},enddate:{enddate},curdate:{curdate}')
+            continue
         data.append([timedata,startpalce,endplace,'地铁',reason,'','','','',cost])
     # f=f[:i]
     # i=f.rfind('\n')
@@ -94,6 +102,8 @@ def didi_data_process(filename,reason):
     import os
     if not os.path.isfile(filename):
         logging.warning("不存在此文件")
+        return inf
+    if not file_operate.check_extension(filename,'txt'):
         return inf
     with open(filename, 'rt', encoding='utf-8') as f:
         txt = f.read()
@@ -118,3 +128,36 @@ def didi_data_process(filename,reason):
         inf.append(data)
         srt = txt.find("快车", end)
     return inf
+def railway_data_process(filename,reason):
+    """
+
+    :param filename: 解析的文件路径，txt格式
+    :param raason: 出差原因
+    :return: 返回按照报销表格需要的信息格式数据,如果没有返回空数组，如果有返回[[...]]
+    """
+    rst = []
+    import os
+    if not os.path.isfile(filename):
+        logging.warning("不存在此文件")
+        return rst
+    if not file_operate.check_extension(filename,'txt'):
+        return rst
+    with open(filename, 'rt', encoding='gb18030') as f:
+        txt = f.read()
+        f.close()
+    if txt is None:
+        return []
+    # index = txt.find('张史龙')
+    # txt = txt[index:]
+    # index = txt.find("。")
+    # txt = txt[:index]
+    data = txt.split('，')
+    tmp = data[2].split('-')
+    startpalce = tmp[0]
+    endplace = tmp[1]
+    Date = data[1][:11]
+    traffic_type = '火车'
+    cost = data[5][2:-1]
+    rst.append([Date,startpalce,endplace,traffic_type,reason,'','','','',cost])
+    return rst
+
