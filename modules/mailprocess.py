@@ -351,6 +351,7 @@ def get_baoxiao_info(str="19900101",end="20181013",filepath="."):
     # password = input('Password: ')
     # pop3_server = input('POP3 server: ')
     email, password, pop3_server, msg_inf = '', '', '', ''
+    rst=False
     #邮箱账户读取位置
     with open(r'C:\Users\123456\Documents\MttQ\1.txt', 'rt', encoding='utf-8') as file:
         msg_inf = file.read().split('\n')
@@ -409,7 +410,7 @@ def get_baoxiao_info(str="19900101",end="20181013",filepath="."):
         if date1 == "":
             print(tmp)
         # date1 = time.strptime(msg.get("Date")[0:24],'%a, %d %b %Y %H:%M:%S') #格式化收件时间
-        date2 = time.strftime("%Y%m%d", date1)  # 邮件时间格式转换
+        date2 = time.strftime("%Y-%m-%d", date1)  # 邮件时间格式转换
         # ------------------可能有问题--------------------------
         if (date2<str):break
         # --------------------------------------------------------

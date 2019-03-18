@@ -1,3 +1,9 @@
+#删除临时文件
+import  tempfile,os
+t=tempfile.gettempdir()
+dir=os.path.join(t,'gen_py')
+if os.path.exists(dir):
+    os.remove(dir)
 import time
 import re
 import sys
@@ -16,11 +22,14 @@ exportfolder=r'C:\Users\123456\PycharmProjects\报销自动化\邮箱下载报�
 importfolder=r'C:\Users\123456\PycharmProjects\报销自动化\邮箱下载报销文件存放位置'#pdf和png存放文件夹
 maildownloadfolder=r'C:\Users\123456\PycharmProjects\报销自动化\邮箱下载报销文件存放位置'
 #报销需要输入的必要信息
-reason='检查样机'
-maildownload_starttime='20181017' #搜索邮件的起始日期
-maildownload_endtime='20181018' #搜索邮件的终止日期
-ditie_starttime='10-12' #地铁票报销的时间段,格式一定要按照这个格式
-ditie_endtime='10-12'#地铁票报销的时间段,格式一定要按照这个格式
+reason='SAK单机版功能验收'
+maildownload_starttime='2019-02-11' #搜索邮件的起始日期
+maildownload_endtime='2019-02-11' #搜索邮件的终止日期
+ditie_starttime='02-10' #地铁票报销的时间段,格式一定要按照这个格式
+ditie_endtime='02-11'#地铁票报销的时间段,格式一定要按照这个格式
+didi_starttime='01-28'
+didi_endtime='02-01'
+
 
 #检查参数是否填写正确
 try:
@@ -37,9 +46,9 @@ except:
 #清空以前下载内容
 for file in os.listdir(maildownloadfolder):
     os.remove(os.path.join(maildownloadfolder,file))
-for folder in exportfolder,importfolder,maildownloadfolder:
-    '' if os.path.exists(folder) else os.mkdir(folder)
-# 将滴滴附件和地铁附件件从邮箱下载到文件夹内
+# for folder in exportfolder,importfolder,maildownloadfolder:
+#     '' if os.path.exists(folder) else os.mkdir(folder)
+# # 将滴滴附件和地铁附件件从邮箱下载到文件夹内
 mailprocess.get_baoxiao_info(maildownload_starttime,maildownload_endtime,maildownloadfolder)
 
 #地铁截图输出的文档信息路径
@@ -68,7 +77,7 @@ if  pdfReconize.export_pdf_to_txt(importfolder,exportfolder):
         i = file_operate.split_path(filepath)[1].find("滴滴")
         if i < 0:
             continue
-        tmp=dataprocess.didi_data_process(filepath,reason)
+        tmp=dataprocess.didi_data_process(filepath,reason,didi_starttime,didi_endtime)
         if not len(tmp):
             print(f'文件路径：{filepath}   无法获取报销信息')
             continue
@@ -112,7 +121,7 @@ print(finall_data)
 #---------------------------excel操作---------------------------
 SRT_ROW=11
 END_ROW=11
-excel=win32.gencache.EnsureDispatch('Excel.Application')
+excel=win32.gencache.EnsureDispatch('ket.Application')
 wb=excel.Workbooks.Open(r'C:\Users\123456\PycharmProjects\报销自动化\表格处理\交通费报销表昆山3.xlsx')
 excel.Visible=True
 ws=wb.Worksheets(1)

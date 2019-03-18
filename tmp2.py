@@ -45,9 +45,6 @@ import time
 #    txt=txt[:index]
 #    txtlist=txt.split('，')
 #    print(txtlist)
-txt=''
-data = dataprocess.railway_data_process(r'C:\Users\123456\PycharmProjects\报销自动化\邮箱下载报销文件存放位置\railway_2018-11-04.txt','检查样机')
-print(data)
 
 
 
@@ -63,3 +60,32 @@ print(data)
 # money=txt[5][2:-1]
 # data.append([Date, startpalce, endplace, traffic_type, reason, '', '', '', '', money])
 # print(data)
+
+class MyArray:
+
+    def __init__(self,*args):
+        self.__value=[]
+        for arg in args:
+            if self.__IsNumber(arg):
+                self.__value.append(arg)
+            else:
+                self.__value=[]
+                print("参数中有非数字的字符")
+                break
+    def __del__(self):
+        pass
+    @property
+    def value(self):
+        return self.__value
+
+    def __IsNumber(self,n):
+        if isinstance(n,(int,float,complex)):
+            return True
+        else:
+            return False
+    def __add__(self, n):
+        self.__value=[item+n for item in self.__value]
+
+a=MyArray(1,2,3)
+a.__add__(5)
+print(a.value)
