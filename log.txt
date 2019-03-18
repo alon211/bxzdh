@@ -1,0 +1,15 @@
+2018-10-15 21:31:45,289 - dataprocess.py[line:96] - WARNING: 不存在此文件
+2018-10-15 21:31:50,310 - dataprocess.py[line:96] - WARNING: 不存在此文件
+2018-11-10 11:51:43,253 - ImageReconize.py[line:64] - WARNING: 文件夹没有img文件
+2018-11-10 11:51:43,257 - pdfReconize.py[line:46] - WARNING: 文件夹没有pdf文件
+2018-11-10 11:56:43,179 - ImageReconize.py[line:64] - WARNING: 文件夹没有img文件
+2019-02-11 09:52:11,166 - ImageReconize.py[line:64] - WARNING: 文件夹没有img文件
+2019-02-11 09:52:11,190 - pdfReconize.py[line:46] - WARNING: 文件夹没有pdf文件
+2019-02-11 10:06:36,415 - ImageReconize.py[line:64] - WARNING: 文件夹没有img文件
+2019-02-11 10:06:36,416 - pdfReconize.py[line:46] - WARNING: 文件夹没有pdf文件
+2019-02-11 10:08:25,615 - ImageReconize.py[line:64] - WARNING: 文件夹没有img文件
+2019-02-11 10:08:25,616 - pdfReconize.py[line:46] - WARNING: 文件夹没有pdf文件
+2019-02-11 15:19:18,735 - ImageReconize.py[line:64] - WARNING: 文件夹没有img文件
+2019-02-11 15:19:47,801 - ImageReconize.py[line:64] - WARNING: 文件夹没有img文件
+2019-02-11 15:24:50,840 - ImageReconize.py[line:64] - WARNING: 文件夹没有img文件
+2019-02-11 15:25:16,219 - ImageReconize.py[line:64] - WARNING: 文件夹没有img文件
