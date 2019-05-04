@@ -75,6 +75,3 @@ def export_ditie_img_to_txt(import_path, export_path='.'):
             print(e)
             traceback.print_exc(file=open('log.txt','w+',encoding='utf-8'))
     return rst
-
-e=file_operate.get_files(r'C:\Users\admin\PycharmProjects')
-print(e)
