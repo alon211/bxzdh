@@ -134,3 +134,4 @@ for data in finall_data:
     END_ROW+=1
 wb.SaveAs(r'.\6.xlsx')
 excel.Application.Quit()
+ws.Cells()

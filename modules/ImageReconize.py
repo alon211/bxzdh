@@ -5,7 +5,10 @@ import pyocr.tesseract
 import logging
 import traceback
 import os
-from file_operate import file_operate
+current_dir = os.path.abspath(os.path.dirname(__file__)+'/'+'..')
+sys.path.append(current_dir)
+sys.path.append("..")
+from usermodules import file_operate
 def export_txtfile(img,txtname,lang='chi_sim+chi_sim2'):
     """
     将图片中的中文文字识别后保存txt文档
@@ -72,3 +75,6 @@ def export_ditie_img_to_txt(import_path, export_path='.'):
             print(e)
             traceback.print_exc(file=open('log.txt','w+',encoding='utf-8'))
     return rst
+
+e=file_operate.get_files(r'C:\Users\admin\PycharmProjects')
+print(e)
