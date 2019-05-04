@@ -1,10 +1,13 @@
 import os
 import re
+import sys
+current_dir = os.path.abspath(os.path.dirname(__file__)+'/'+'..')
+sys.path.append(current_dir)
 # import sys
 # current_dir = os.path.abspath(os.path.dirname(__file__))
 # sys.path.append(current_dir)
 # sys.path.append("..")
-from MyException import MyException
+from usermodules.MyException import MyException
 def get_files(floder_path):
     """
     获取路径下所有文件

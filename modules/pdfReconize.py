@@ -1,9 +1,13 @@
-from MyException import MyException
-from MyException.MyException import FILE_ERROR_INFOR
-import fitz
+import sys
 import os
+current_dir = os.path.abspath(os.path.dirname(__file__)+'/'+'..')
+sys.path.append(current_dir)
+from usermodules import file_operate
+from usermodules import MyException
+from usermodules.MyException import FILE_ERROR_INFOR
+import fitz
+
 import traceback
-from file_operate import file_operate
 import logging
 # print(fitz.__doc__)
 # print(fitz.version)
@@ -53,3 +57,4 @@ def export_pdf_to_txt(import_path,export_path='.'):
             print(e)
             traceback.print_exc(file=open('log.txt','w+',encoding='utf-8'))
     return rst
+export_pdf_to_txt(r'C:\Users\admin\PycharmProjects\报销自动化\bxzdh\pdf识别',r'C:\Users\admin\PycharmProjects\报销自动化\bxzdh\pdf识别')

@@ -2,7 +2,10 @@ import time
 import re
 import logging
 import datetime
-from file_operate import file_operate
+import sys
+current_dir = os.path.abspath(os.path.dirname(__file__)+'/'+'..')
+sys.path.append(current_dir)
+from usermodules import file_operate
 import numpy as np
 
 
