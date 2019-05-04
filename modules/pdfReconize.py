@@ -57,4 +57,3 @@ def export_pdf_to_txt(import_path,export_path='.'):
             print(e)
             traceback.print_exc(file=open('log.txt','w+',encoding='utf-8'))
     return rst
-export_pdf_to_txt(r'C:\Users\admin\PycharmProjects\报销自动化\bxzdh\pdf识别',r'C:\Users\admin\PycharmProjects\报销自动化\bxzdh\pdf识别')
