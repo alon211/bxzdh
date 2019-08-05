@@ -1,16 +1,20 @@
+
 import sys
-sys.path.append(r'C:\Users\123456\PycharmProjects\usermodules')
-from file_operate import file_operate
-from MyException import MyException
-from MyException.MyException import FILE_ERROR_INFOR
-import fitz
 import os
+sys.path.append('../')
+# sys.path.append(os.path.abspath(os.path.dirname(sys.path[0])))
+import fitz
+from usermodules import file_operate
+from usermodules import MyException
+from usermodules.MyException import FILE_ERROR_INFOR
+
+
 import traceback
 print(fitz.__doc__)
 print(fitz.version)
 # pdf识别路径
 pdf_file= file_operate.get_files_by_extension(extension_name='pdf')
-
+print(pdf_file)
 def pdf2text(file_path,output_path='.'):
     """
 
